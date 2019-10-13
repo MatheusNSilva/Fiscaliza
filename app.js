@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
-import Orgaos_FederaisScreen from './orgaos_federais'
+import Orgaos_FederaisScreen from './orgao_publico'
 
  
 import HomeScreen from './components/home'

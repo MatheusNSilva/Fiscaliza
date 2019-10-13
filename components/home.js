@@ -11,7 +11,7 @@ export default class HomeScreen extends React.Component {
       <View>
         <Button
           title="Orgãos Federais"
-          onPress={() => navigate('orgaos_federais')}
+          onPress={() => navigate('orgao_publico')}
         />
       </View>
     );

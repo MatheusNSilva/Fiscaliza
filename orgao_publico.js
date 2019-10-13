@@ -13,18 +13,17 @@ export default class Orgaos_FederaisScreen extends React.Component {
  
   procurar_orgao_publico(){
     const { navigation } = this.props;
-    this.focusListener = navigation.addListener('didFocus', () => {
-      var descricaoUrl = encodeURI(this.state.descricao);
-      var paginaUrl = encodeURI(this.state.pagina);
-      var uri = "http://www.transparencia.gov.br/api-de-dados/orgaos-siafi"+
-        "?descricao="+descricaoUrl+
-        "&pagina="+paginaUrl;
-      fetch(uri)
-          .then( response => response.json())
-          .then( responseJson => {
-            this.setState({ listagem: responseJson.map(orgaos => orgaos.descricao)})
-          });
-    });
+    var descricaoUrl = encodeURI(this.state.descricaoUrl);
+    var paginaUrl = encodeURI(1);
+    var uri = "http://www.transparencia.gov.br/api-de-dados/orgaos-siafi"+
+      "?descricao="+descricaoUrl+
+      "&pagina="+paginaUrl;
+    fetch(uri)
+        .then( response => response.json())
+        .then( responseJson => {
+          console.log(responseJson)
+          this.setState({ listagem: responseJson})
+        });
   }
 
   render() {
@@ -61,5 +60,10 @@ const styles = StyleSheet.create({
   container: {
    flex: 1,
    paddingTop: 22
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   }
 })
