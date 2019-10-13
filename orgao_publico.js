@@ -29,7 +29,7 @@ export default class Orgaos_FederaisScreen extends React.Component {
 
   render() {
     const { navigate } = this.props.navigation;
-    const { descricaoUrl } = this.state;
+    const { descricaoUrl, listagem, codigo } = this.state;
     return (
       <View style={styles.container}>
         <Text>descricao</Text>
@@ -37,7 +37,19 @@ export default class Orgaos_FederaisScreen extends React.Component {
           onChangeText={text => this.setState({ descricaoUrl: text })}
           value={descricaoUrl}
         />
-        <Text>{JSON.stringfy(this.state.listagem)}</Text>
+        <FlatList
+          data={this.state.listagem}
+           renderItem={({item}) =>
+            <TouchableOpacity onPress={ () => navigate('descricao_orgao', {orgaoCodigo: item.codigo, orgaoDescricao: item.descricao})}>
+              <View>
+                <Text style={styles.item}> 
+                  {item.listagem, item.codigoDescricaoFormatado}
+                
+                </Text>
+              </View>
+             
+            </TouchableOpacity>
+           }/>
         <Button title="Pesquisar" onPress={() => this.procurar_orgao_publico()} />
         <Button title="Voltar" onPress={() => navigate('Home')} />
       </View>
